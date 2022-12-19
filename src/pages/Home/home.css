@@ -1,0 +1,9 @@
+.home-container {
+    min-height: 100vh;
+    margin-top: 120px;
+    display: grid;
+    place-content: center;
+    grid-template: auto / repeat(auto-fill, minmax(200px, 30%));
+    padding: 0 1rem;
+    gap: 3rem 1rem;
+}

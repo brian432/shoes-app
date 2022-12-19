@@ -1,0 +1,26 @@
+.card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    color: black;
+    min-height: fit-content; 
+}
+
+.card-container .div-img {
+    width: 100%;
+}
+
+.card-container .div-img img {
+    width: 100%;
+    height: auto;
+}
+
+.card-container .colors{
+    display: flex;
+    gap: .5rem;
+}
+
+.card-container .colors span{
+    width: 1rem;
+    border-radius: 50%;
+}

@@ -1,0 +1,132 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 3rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+}
+ 
+.headerLeft .logo:hover{
+    color: rgba(0, 0, 0, 0.579);
+}
+
+.headerRight{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+header a{
+    color: black;
+}
+
+.auth-header a {
+    color: black;
+}
+
+.auth-header {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.auth-header section {
+    display: flex;
+    gap: 1rem;
+}
+
+#hamburguesa {
+    display: none;
+    cursor: pointer;
+}
+
+#hamburguesa div {
+    width: 25px;
+    height: 3px;
+    background-color: black;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+/*animacion*/
+.linea1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.linea2 {
+    opacity: 0;
+}
+
+.linea3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+
+@media (max-width: 768px) {
+    header {
+        padding: 1rem;
+    }
+}
+
+@media (max-width:500px) {
+    #hamburguesa {
+        display: block;
+    }
+    .section-auth{
+        display: none!important;
+    }
+    .menu-disable{
+        display: flex!important;
+        position: absolute;
+        padding-top: 10px;
+        top: 60px;
+        height: 100vh;
+        right: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.746);
+        animation: menu-disable .5s forwards;
+    }
+    .menu-disable a{
+        display: none;
+    }
+    .menu-active{
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        justify-content: space-around;
+        align-items: center;
+        padding-top: 10px;
+        top: 60px;
+        height: 100vh;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.746);
+        animation: menu-active .5s forwards;
+    }
+    .menu-active a{
+        color: white;
+        z-index: 999;
+    }
+}
+
+@keyframes menu-active {
+    0%{
+        width: 0%;
+    }
+    100%{
+        width: 100%;
+    }
+}
+
+@keyframes menu-disable{
+    0%{
+        width: 100%;
+    }
+    100%{
+        width: 0%;
+    }
+}
