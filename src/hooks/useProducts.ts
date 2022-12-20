@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { getProducts, getProductsId } from "../services/productsFetch";
 import { ProductsTypes } from "../types/types";
 import { useAppDispatch, useAppSelector } from './useTypedSelector';
@@ -6,11 +7,13 @@ import { useAppDispatch, useAppSelector } from './useTypedSelector';
 export const useProducts = (): ProductsTypes[] => {
     const { products } = useAppSelector(state => state.products);
     const dispatch = useAppDispatch();
+    const category = useLocation().pathname.split("/")[1];
 
     useEffect(() => {
         dispatch(getProducts())
     }, []);
 
+    if (category) return products.filter(product => product.category === category);
     return products
 };
 

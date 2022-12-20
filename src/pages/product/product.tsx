@@ -14,7 +14,6 @@ export const Product: FC = () => {
 
     const { id } = useParams();
     const product = useProductsId(id as string);
-    console.log(product)
 
     const handleClick = (img: string, color: string) => {
         setImgActive({

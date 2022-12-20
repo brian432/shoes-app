@@ -28,7 +28,6 @@ const rules = [rulesForJavaScript, rulesForTypeScript, rulesForStyles];
 module.exports = (env, argv) => {
     const { mode } = argv;
     const isProduction = mode === "production";
-    console.log(isProduction);
     return {
         entry: './src/index.tsx',
         output: {

@@ -11,18 +11,30 @@ header {
 }
  
 .headerLeft .logo:hover{
-    color: rgba(0, 0, 0, 0.579);
+    color: rgba(74, 73, 73, 0.579);
 }
 
-.headerRight{
+.headerRight, .headerCenter{
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
 }
+.icons{
+    padding: 5px;
+}
+.icons:hover{
+    border-radius: 50%;
+    background-color: rgba(74, 73, 73, 0.579);
+}
+.movilLink{
+    display: none;
+}
 
 header a{
     color: black;
+    display: flex;
+    align-items: center;
 }
 
 .auth-header a {
@@ -37,6 +49,7 @@ header a{
 
 .auth-header section {
     display: flex;
+    align-items: center;
     gap: 1rem;
 }
 
@@ -76,6 +89,12 @@ header a{
 @media (max-width:500px) {
     #hamburguesa {
         display: block;
+    }
+    .movilLink{
+        display: block;
+    }
+    .headerCenter{
+        display: none;
     }
     .section-auth{
         display: none!important;

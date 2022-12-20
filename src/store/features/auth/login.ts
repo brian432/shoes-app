@@ -26,7 +26,8 @@ const loginSlice = createSlice({
             .addCase(postLogin.fulfilled, (state, action: PayloadAction<any>) => {
                 state.loading = false;
                 state.login = true;
-                state.user = action.payload
+                state.user = action.payload;
+                localStorage.setItem("tokenAuth", action.payload.token);
             })
             .addCase(postLogin.rejected, (state, action: PayloadAction<any>) => {
                 state.loading = false;

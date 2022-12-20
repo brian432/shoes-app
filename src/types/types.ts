@@ -41,10 +41,12 @@ export type LoginState = {
 export interface ProductsTypes {
     title: string,
     desc: string,
+    category:string,
     img: string[],
     size: string[],
     color: string[],
     price: number,
+    inStock:boolean,
     id: string,
     createdAt: string,
     updatedAt: string,
