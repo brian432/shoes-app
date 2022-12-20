@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useAppDispatch, useAppSelector } from './useTypedSelector';
-import { registerSwitch } from "../store/features/auth/register";
+import { registerSwitch } from "../features/auth/registerSlice";
 import { useNavigate } from "react-router-dom";
 import { swalTrue, swalFalse } from '../utils/swal'
 

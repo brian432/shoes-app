@@ -9,7 +9,7 @@
 
 body, #root{
     max-width: 1980px;
-    min-height: 100vh;
+    min-height: calc(100vh - 120px);
     margin: 0 auto;
 }
 a{

@@ -7,6 +7,7 @@ import { Login } from './pages/auth/login';
 import { Home } from './pages/Home/home';
 import { Product } from './pages/product/product';
 import { Logged } from './components/logged/logged';
+import {Cart} from './pages/cart/cart';
 import './index.css';
 
 export const App: FC = () => {
@@ -27,6 +28,7 @@ export const App: FC = () => {
                     </Logged>
                 } />
                 <Route path='/product/:id' element={<Product />} />
+                <Route path='/cart' element={<Cart />}/>
             </Routes>
         </>
 

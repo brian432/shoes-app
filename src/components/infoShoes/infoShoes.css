@@ -34,6 +34,22 @@
     align-self: flex-start;
 }
 
+.quantity{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.quantity button{
+    width: 20px;
+    height: auto;
+    background: none;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
 .cardShopp .buttons {
     display: flex;
     flex-wrap: wrap;
@@ -52,6 +68,7 @@
     text-align: end;
     outline: none;
     border: 0;
+    cursor: pointer;
 }
 
 .cardShopp .buttons option {
@@ -68,6 +85,7 @@
     font-size: 1rem;
     font-weight: 700;
     letter-spacing: 2px;
+    cursor: pointer;
 }
 
 .data-shoes {
@@ -78,6 +96,10 @@
     background: #f7f7f7;
     color: #919191;
     overflow: hidden;
+}
+
+.cardShopp button:active{
+    transform: translateY(2px)
 }
 
 @keyframes infoShoes {

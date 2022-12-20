@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { postRegister } from '../../../services/authFetch';
-import { RegisterState } from "../../../types/types";
+import { postRegister } from '../../services/authFetch';
+import { RegisterState } from "../../types/types";
 
 const initialState: RegisterState = {
     loading: false,

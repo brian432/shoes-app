@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { postLogin } from '../../../services/authFetch';
-import { LoginState } from "../../../types/types";
+import { postLogin } from '../../services/authFetch';
+import { LoginState } from "../../types/types";
 
 const initialState: LoginState = {
     loading: false,

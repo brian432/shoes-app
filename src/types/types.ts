@@ -41,12 +41,12 @@ export type LoginState = {
 export interface ProductsTypes {
     title: string,
     desc: string,
-    category:string,
+    category: string,
     img: string[],
     size: string[],
     color: string[],
     price: number,
-    inStock:boolean,
+    inStock: boolean,
     id: string,
     createdAt: string,
     updatedAt: string,
@@ -67,6 +67,27 @@ export type StateImg = {
 }
 
 export interface CardProps {
-    details: ProductsTypes,
+    product: ProductsTypes,
     imgActive: StateImg
 }
+
+
+//types for cart state
+
+export type ProductCart = {
+    title: string, 
+    price: number, 
+    desc: string, 
+    category: string, 
+    imgPath: string, 
+    color: string, 
+    quantity: number, 
+    size: string, 
+    id: string
+}
+
+export interface CartState {
+    products: ProductCart[],
+    quantity: number,
+    total: number
+};

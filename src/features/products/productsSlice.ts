@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { getProducts, getProductsId } from "../../../services/productsFetch";
-import { ProductsState, ProductsTypes } from "../../../types/types";
+import { getProducts, getProductsId } from "../../services/productsFetch";
+import { ProductsState, ProductsTypes } from "../../types/types";
 
 const initialState: ProductsState = {
     loading: false,

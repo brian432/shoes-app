@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import { useLogged } from '../../hooks/useLogged';
 import './header.css';
 import { Logo } from '../logo/logo';
+import { useAppSelector } from "../../hooks/useTypedSelector";
 
 export const Header: FC = () => {
     const [menu, setMenu] = useState<string>("");
     const logged = useLogged();
+    const { quantity } = useAppSelector(state => state.cart)
 
     const handleMenu = (param: string) => {
         if (!param) menu === ""
@@ -38,6 +40,8 @@ export const Header: FC = () => {
                             <span className="material-symbols-outlined">
                                 shopping_cart
                             </span>
+                            {quantity > 0 && <span className="quantity">{quantity}</span>}
+
                         </Link>
                         {
                             !logged &&

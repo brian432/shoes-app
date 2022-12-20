@@ -1,0 +1,145 @@
+.cart-container {
+    width: 100%;
+    min-height: 100vh;
+    margin-top: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 3rem;
+    gap: 3rem;
+}
+
+.cart-container .buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart-container .buttons a {
+    width: 200px;
+    height: 40px;
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    background: none;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+.cart-container a:active {
+    transform: translateY(2px)
+}
+
+.products-cart {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+}
+
+.products-cart .product {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.174) ;
+}
+
+.products-cart .productWrapper {
+    display: flex;
+}
+
+.products-cart .div-img {
+    width: 260px;
+}
+
+.products-cart img {
+    width: 100%;
+    height: auto;
+}
+
+.detailsWrapper,
+.price {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.price {
+    justify-content: center;
+}
+
+.totalCart{
+    display: flex;
+    flex-direction: column;
+    min-width: 290px;
+    margin: 0 auto;
+    gap: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.174);
+    padding: 1rem;
+    border-radius: 10px;
+}
+.totalCart h2, .totalCart h3{
+    display: flex;
+    justify-content: space-between;
+}
+
+.totalCart a, .checkout{
+    height: 40px;
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white!important;
+    background: none;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    cursor: pointer;
+    background-color: black!important;
+}
+
+@media screen and (max-width: 810px) {
+    .products-cart {
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .products-cart .product,
+    .productWrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .products-cart .productWrapper {
+        align-items: flex-start;
+    }
+
+    .product {
+        width: max-content;
+        margin: 0 auto;
+        gap: 2rem;
+        padding: 10px;
+        border: 2px solid rgba(0, 0, 0, 0.174);
+    }
+
+    .price {
+        align-self: flex-start;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .cart-container {
+        padding: 0 1rem;
+    }
+}
+
+@media screen and (max-width: 460px) {
+    .cart-container .buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+}

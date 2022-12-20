@@ -44,7 +44,7 @@ export const Product: FC = () => {
             {
                 imgActive.imgPath &&
                 <>
-                    <InfoShoes details={product} imgActive={imgActive} />
+                    <InfoShoes product={product} imgActive={imgActive} />
                     {/*<Carousel />*/}
                 </>
             }

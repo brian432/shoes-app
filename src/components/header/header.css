@@ -11,7 +11,7 @@ header {
 }
  
 .headerLeft .logo:hover{
-    color: rgba(74, 73, 73, 0.579);
+    color: rgba(196, 196, 196, 0.579);
 }
 
 .headerRight, .headerCenter{
@@ -22,11 +22,27 @@ header {
 }
 .icons{
     padding: 5px;
+    position:relative;
 }
 .icons:hover{
     border-radius: 50%;
-    background-color: rgba(74, 73, 73, 0.579);
+    background-color: rgba(196, 196, 196, 0.579);
 }
+.icons .quantity{
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    font-size: 13px;
+    right: 0;
+    top: -5px;
+    background-color: red;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .movilLink{
     display: none;
 }
