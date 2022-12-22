@@ -30,10 +30,6 @@
     cursor: pointer;
 }
 
-.cart-container a:active {
-    transform: translateY(2px)
-}
-
 .products-cart {
     width: 100%;
     display: flex;
@@ -44,11 +40,13 @@
 .products-cart .product {
     display: flex;
     justify-content: space-between;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.174) ;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.174);
+    position: relative;
 }
 
 .products-cart .productWrapper {
     display: flex;
+    color: black;
 }
 
 .products-cart .div-img {
@@ -69,9 +67,18 @@
 
 .price {
     justify-content: center;
+    z-index: 9;
+    position: relative;
 }
 
-.totalCart{
+.price .material-symbols-outlined {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+
+.totalCart {
     display: flex;
     flex-direction: column;
     min-width: 290px;
@@ -81,24 +88,27 @@
     padding: 1rem;
     border-radius: 10px;
 }
-.totalCart h2, .totalCart h3{
+
+.totalCart h2,
+.totalCart h3 {
     display: flex;
     justify-content: space-between;
 }
 
-.totalCart a, .checkout{
+.totalCart a,
+.checkout {
     height: 40px;
     border: 1px solid;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white!important;
+    color: white !important;
     background: none;
     font-size: 1rem;
     font-weight: 700;
     letter-spacing: 2px;
     cursor: pointer;
-    background-color: black!important;
+    background-color: black !important;
 }
 
 @media screen and (max-width: 810px) {
@@ -127,6 +137,11 @@
 
     .price {
         align-self: flex-start;
+    }
+    .price .material-symbols-outlined {
+        position: absolute;
+        top: 41px;
+        right: -200px;
     }
 }
 

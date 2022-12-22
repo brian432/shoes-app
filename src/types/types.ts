@@ -71,23 +71,29 @@ export interface CardProps {
     imgActive: StateImg
 }
 
-
 //types for cart state
 
 export type ProductCart = {
-    title: string, 
-    price: number, 
-    desc: string, 
-    category: string, 
-    imgPath: string, 
-    color: string, 
-    quantity: number, 
-    size: string, 
-    id: string
+    title: string
+    price: number
+    productId: string
+    img: string
+    color: string
+    quantity: number
+    size: string
+    id?: string
 }
 
 export interface CartState {
-    products: ProductCart[],
-    quantity: number,
+    loading: boolean
+    cards: ProductCart[]
+    quantity: number
     total: number
+    error: null | string
 };
+
+export type PropToUpdateCard = {
+    quantity: number
+    price: number
+    id: string | undefined
+}

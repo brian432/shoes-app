@@ -3,18 +3,25 @@ import { Link } from "react-router-dom";
 import { useLogged } from '../../hooks/useLogged';
 import './header.css';
 import { Logo } from '../logo/logo';
-import { useAppSelector } from "../../hooks/useTypedSelector";
+import { useAppDispatch, useAppSelector } from "../../hooks/useTypedSelector";
+import { loginSwitch } from "../../features/auth/loginSlice";
 
 export const Header: FC = () => {
     const [menu, setMenu] = useState<string>("");
     const logged = useLogged();
-    const { quantity } = useAppSelector(state => state.cart)
+
+    const dispatch = useAppDispatch();
+    const { quantity } = useAppSelector(state => state.cart);
 
     const handleMenu = (param: string) => {
         if (!param) menu === ""
             ? setMenu("activo")
             : setMenu("")
         else setMenu("")
+    };
+
+    const handleLogout = () => {
+        dispatch(loginSwitch);
     };
 
     return (
@@ -31,24 +38,28 @@ export const Header: FC = () => {
                     <section className={menu === "activo" ? "menu-active" : "menu-disable section-auth"}>
                         <Link to="/men" className="movilLink" onClick={() => handleMenu("desactive")}>Hombre</Link>
                         <Link to="/women" className="movilLink" onClick={() => handleMenu("desactive")}>Mujer</Link>
-                        <Link to="/fav" className="icons">
-                            <span className="material-symbols-outlined">
-                                favorite
-                            </span>
-                        </Link>
-                        <Link to="/cart" className="icons">
-                            <span className="material-symbols-outlined">
-                                shopping_cart
-                            </span>
-                            {quantity > 0 && <span className="quantity">{quantity}</span>}
-
-                        </Link>
                         {
-                            !logged &&
-                            <>
-                                <Link to="/login" onClick={() => handleMenu("desactive")}>Inciar Sesion</Link>
-                                <Link to="/register" onClick={() => handleMenu("desactive")}>Registrarse</Link>
-                            </>
+                            !logged
+                                ? <>
+                                    <Link to="/login" onClick={() => handleMenu("desactive")}>Inciar Sesión</Link>
+                                    <Link to="/register" onClick={() => handleMenu("desactive")}>Registrarse</Link>
+                                </>
+                                : <>
+                                    <Link to="/fav" className="icons">
+                                        <span className="material-symbols-outlined">
+                                            favorite
+                                        </span>
+                                    </Link>
+                                    <Link to={logged ? "/cart" : "/login"} className="icons">
+                                        <span className="material-symbols-outlined">
+                                            shopping_cart
+                                        </span>
+                                        {quantity > 0 && <span className="quantity">{quantity}</span>}
+
+                                    </Link>
+                                    <Link to="/" onClick={handleLogout}>Cerrar Sesión</Link>
+                                </>
+
                         }
                     </section>
                     <div id="hamburguesa" onClick={() => handleMenu("")}>

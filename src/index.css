@@ -12,6 +12,11 @@ body, #root{
     min-height: calc(100vh - 120px);
     margin: 0 auto;
 }
+/*Global styles*/
+
 a{
     text-decoration: none;
+}
+.clickActive:active{
+    transform: translateY(2px);
 }

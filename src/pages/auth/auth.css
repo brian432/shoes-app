@@ -79,10 +79,6 @@
     margin-bottom: .5rem;
 }
 
-.button:active{
-    transform: translateY(4px)
-}
-
 .auth a{
     color: white;
 }

@@ -42,7 +42,7 @@ export const Login: FC = () => {
                                         <label htmlFor='password' className='label'>Password</label>
                                     </div>
                                     <div>
-                                        <button type='submit' className='button'>Iniciar sesión</button>
+                                        <button type='submit' className='button clickActive'>Iniciar sesión</button>
                                         <Link to="/register">Registrarse</Link>
                                     </div>
                                 </Form>

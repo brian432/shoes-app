@@ -53,7 +53,7 @@ export const Register: FC = () => {
                                     <label htmlFor='password' className='label'>Password</label>
                                 </div>
                                 <div>
-                                    <button type='submit' className='button'>Registrarse</button>
+                                    <button type='submit' className='button clickActive'>Registrarse</button>
                                     <Link to="/login">Iniciar sesión</Link>
                                 </div>
                             </Form>

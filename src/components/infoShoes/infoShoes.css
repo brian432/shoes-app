@@ -98,10 +98,6 @@
     overflow: hidden;
 }
 
-.cardShopp button:active{
-    transform: translateY(2px)
-}
-
 @keyframes infoShoes {
     0% {
         height: 0%;

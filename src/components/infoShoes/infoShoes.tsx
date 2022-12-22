@@ -1,12 +1,14 @@
 import { FC, useState } from "react"
-import { addProduct } from "../../features/cart/cartSlice";
+import { useNavigate } from "react-router-dom";
+import { createCartCard } from '../../services/cartFetch';
+import { useLogged } from "../../hooks/useLogged";
 import { useAppDispatch } from "../../hooks/useTypedSelector";
 import { CardProps } from "../../types/types"
 import './infoShoes.css';
 
 export const InfoShoes: FC<CardProps> = ({
     product: {
-        title, price, size, desc, category, id
+        title, price, size, id
     },
     imgActive: {
         imgPath,
@@ -15,6 +17,8 @@ export const InfoShoes: FC<CardProps> = ({
 }) => {
     const [quantity, setQuantity] = useState<number>(1);
     const [sizeSelected, setSizeSelected] = useState<string>("40");
+    const logged = useLogged();
+    const navigate = useNavigate();
     const dispatch = useAppDispatch();
 
     const handleQuantity = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -25,12 +29,14 @@ export const InfoShoes: FC<CardProps> = ({
     };
 
     const handleCart = () => {
-        dispatch(addProduct({ title, price, desc, category, imgPath, color: colorShoes, quantity, size: sizeSelected, id }));
+        if (logged) dispatch(createCartCard({ title, price: price * quantity, size: sizeSelected, productId: id, img: imgPath, color: colorShoes, quantity }));
+        else navigate('/login')
     };
 
     const handleSize = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setSizeSelected(e.currentTarget.value)
-    }
+    };
+
     return (
         <div className='infoShoes'>
             <h1>{title}</h1>
@@ -38,6 +44,7 @@ export const InfoShoes: FC<CardProps> = ({
                 <h2>${price}</h2>
                 <div className="quantity">
                     <button
+                        className="clickActive"
                         id="-"
                         onClick={handleQuantity}
                         style={{
@@ -48,6 +55,7 @@ export const InfoShoes: FC<CardProps> = ({
                     </button>
                     <div>{quantity}</div>
                     <button
+                        className="clickActive"
                         id="+"
                         onClick={handleQuantity}
                         style={{
@@ -74,6 +82,7 @@ export const InfoShoes: FC<CardProps> = ({
                         </select>
                     </div>
                     <button
+                        className="clickActive"
                         style={{
                             background: colorShoes
                         }}

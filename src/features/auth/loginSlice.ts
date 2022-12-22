@@ -14,7 +14,7 @@ const loginSlice = createSlice({
     initialState: initialState,
     reducers: {
         loginSwitch: (state) => {
-            state = initialState
+            state = initialState;
         }
     },
     extraReducers(builder) {

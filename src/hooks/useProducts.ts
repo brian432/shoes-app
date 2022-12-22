@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { getProducts, getProductsId } from "../services/productsFetch";
 import { ProductsTypes } from "../types/types";
