@@ -62,6 +62,7 @@ export const CartSlice = createSlice({
                 const updatedCartCards: ProductCart[] = state.cards.filter(card => card.id !== action.payload.id);
                 state.loading = false;
                 state.cards = updatedCartCards;
+                state.quantity = state.cards.length;
                 state.total = updatedCartCards.map(product => product.price).reduce((suma, actual) => suma + actual, 0);
             })
             .addCase(delCartCard.rejected, (state, action: PayloadAction<any>) => {

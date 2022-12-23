@@ -44,7 +44,7 @@ module.exports = (env, argv) => {
         },
         module: { rules },
         resolve: {
-            extensions: ['.tsx', '.ts', '.js'],
+            extensions: ['.tsx', '.ts', '.js']
         },
         plugins: [
             new HtmlWebpackPlugin({ template: 'src/index.html' })

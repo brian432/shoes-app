@@ -1,13 +1,15 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Link } from "react-router-dom";
 import { useCarts } from '../../hooks/useCarts';
 import { useAppDispatch } from "../../hooks/useTypedSelector";
 import { delCartCard, updateCartCard } from "../../services/cartFetch";
+import StripeCheckout, { StripeCheckoutProps, Token } from "react-stripe-checkout";
 import './cart.css';
 
 export const Cart: FC = () => {
     const { cards, total } = useCarts();
     const dispatch = useAppDispatch();
+    const [stripeToken, setStripeToken] = useState<Token | null>(null);
 
     const handleUpdateCartCard = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, quantity: number, price: number, id: string | undefined) => {
         const button: HTMLButtonElement = e.currentTarget;
@@ -19,6 +21,12 @@ export const Cart: FC = () => {
     const handleDeleteCartCard = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>, id: string | undefined) => {
         dispatch(delCartCard(id))
     };
+
+    const handleToken = (token: Token) => {
+        setStripeToken(token)
+    }
+
+    console.log(stripeToken)
 
     return (
         <div className="cart-container">
@@ -63,7 +71,16 @@ export const Cart: FC = () => {
                 <h3>Envio: <span>$0</span></h3>
                 <h3>Descuento: <span>$-0</span></h3>
                 <h2><strong>Total:</strong> <span>${total}</span></h2>
-                <Link to="/" className="clickActive">Termine su compra</Link >
+                <StripeCheckout
+                    stripeKey="pk_test_51MIG3MAQYKqaVMKETFqjPshbszaDUaEysBAqUFtzkqK9IXQwJo85KRtsihOsNcTcJa9sHMOzJIHw1U6VD1VwAuh900HUXtD8iV"
+                    token={handleToken}
+                    amount={total}
+                    billingAddress
+                    shippingAddress
+                    description={`El total de su compra es ${total}`}
+                    currency="USD"
+                    ComponentClass="div"
+                />
             </div>
         </div>
     )
