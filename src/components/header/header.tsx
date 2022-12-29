@@ -9,9 +9,10 @@ import { loginSwitch } from "../../features/auth/loginSlice";
 export const Header: FC = () => {
     const [menu, setMenu] = useState<string>("");
     const logged = useLogged();
-
     const dispatch = useAppDispatch();
     const { quantity } = useAppSelector(state => state.cart);
+
+    console.log(logged)
 
     const handleMenu = (param: string) => {
         if (!param) menu === ""

@@ -97,3 +97,44 @@ export type PropToUpdateCard = {
     price: number
     id: string | undefined
 }
+
+//stripe types
+
+export type StripeData = {
+    amount: number
+    billing_details: {
+        address: string
+    }
+}
+
+export interface StripeState {
+    loading: boolean
+    cards: ProductCart[]
+    data: StripeData,
+    error: null | string
+}
+
+
+//order types
+
+export type CreateOrderCardTypes = {
+    products: Omit<ProductCart, "price" | "id">[]
+    amount: number
+    address: string
+}
+
+export type OrderCard = {
+    id: string
+    products: Omit<ProductCart, "price" | "id">[]
+    amount: number
+    address: {}
+    createdAt: Date
+    updateAt: Date
+}
+
+export type OrderState = {
+    loading: boolean
+    orderId: string
+    orders: OrderCard[]
+    error: null | string
+}

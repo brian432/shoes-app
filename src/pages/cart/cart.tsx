@@ -1,15 +1,23 @@
-import { FC, useState } from "react";
+import { FC, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useCarts } from '../../hooks/useCarts';
 import { useAppDispatch } from "../../hooks/useTypedSelector";
 import { delCartCard, updateCartCard } from "../../services/cartFetch";
-import StripeCheckout, { StripeCheckoutProps, Token } from "react-stripe-checkout";
+import { createStripeCard } from '../../services/stripeFetch';
+import StripeCheckout, { Token } from "react-stripe-checkout";
+import { useStripe } from '../../hooks/useStripe';
 import './cart.css';
 
 export const Cart: FC = () => {
     const { cards, total } = useCarts();
     const dispatch = useAppDispatch();
-    const [stripeToken, setStripeToken] = useState<Token | null>(null);
+    useStripe();
+
+    //desplazamiento al elemento totalCart
+    const totalCartRef = useRef<HTMLDivElement>(null); //Creamos una referencia al elemento dentro el componente al cual nos vamos a desplazar
+    const handleScrollToTotalCart = () => {
+        totalCartRef.current?.scrollIntoView({ behavior: 'smooth' });
+    };
 
     const handleUpdateCartCard = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, quantity: number, price: number, id: string | undefined) => {
         const button: HTMLButtonElement = e.currentTarget;
@@ -23,17 +31,15 @@ export const Cart: FC = () => {
     };
 
     const handleToken = (token: Token) => {
-        setStripeToken(token)
-    }
-
-    console.log(stripeToken)
+        dispatch(createStripeCard({ tokenId: token.id, amount: total * 100, cards }))
+    };
 
     return (
         <div className="cart-container">
-            <h1>Tu Carrito</h1>
+            <h1>{total >= 1 ? "Tu Carrito" : "Su carrito está vacío"}</h1>
             <div className="buttons">
                 <Link to="/" className="clickActive">Continúe comprando</Link    >
-                <Link to="/" className="checkout clickActive">Termine su compra</Link >
+                <button className="button-checkout clickActive" onClick={handleScrollToTotalCart}>Termine su compra</button>
             </div>
             <div className="products-cart">
                 {
@@ -65,22 +71,26 @@ export const Cart: FC = () => {
                     )
                 }
             </div>
-            <div className="totalCart">
+            <div className="totalCart" ref={totalCartRef}>
                 <h1>Resumen del pedido</h1>
                 <h3>Subtotal: <span>${total}</span></h3>
                 <h3>Envio: <span>$0</span></h3>
                 <h3>Descuento: <span>$-0</span></h3>
                 <h2><strong>Total:</strong> <span>${total}</span></h2>
-                <StripeCheckout
-                    stripeKey="pk_test_51MIG3MAQYKqaVMKETFqjPshbszaDUaEysBAqUFtzkqK9IXQwJo85KRtsihOsNcTcJa9sHMOzJIHw1U6VD1VwAuh900HUXtD8iV"
-                    token={handleToken}
-                    amount={total}
-                    billingAddress
-                    shippingAddress
-                    description={`El total de su compra es ${total}`}
-                    currency="USD"
-                    ComponentClass="div"
-                />
+                {
+                    total >= 1 &&
+                    <StripeCheckout
+                        stripeKey="pk_test_51MIG3MAQYKqaVMKETFqjPshbszaDUaEysBAqUFtzkqK9IXQwJo85KRtsihOsNcTcJa9sHMOzJIHw1U6VD1VwAuh900HUXtD8iV"
+                        token={handleToken}
+                        amount={total * 100}
+                        billingAddress
+                        shippingAddress
+                        description={`El total de su compra es ${total}`}
+                        currency="USD"
+                        ComponentClass="div"
+                        label="Realizar pago"
+                    />
+                }
             </div>
         </div>
     )

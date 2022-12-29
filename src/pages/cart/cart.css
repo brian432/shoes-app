@@ -15,7 +15,7 @@
     justify-content: space-between;
 }
 
-.cart-container .buttons a {
+.cart-container .buttons a, .button-checkout {
     width: 200px;
     height: 40px;
     border: 1px solid;
@@ -95,19 +95,8 @@
     justify-content: space-between;
 }
 
-.totalCart a,
-.checkout {
-    height: 40px;
-    border: 1px solid;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.button-checkout {
     color: white !important;
-    background: none;
-    font-size: 1rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    cursor: pointer;
     background-color: black !important;
 }
 

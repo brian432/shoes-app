@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { getCartCards, createCartCard, updateCartCard, delCartCard } from '../../services/cartFetch';
+import { getCartCards, createCartCard, updateCartCard, delCartCard, delAllCartCards } from '../../services/cartFetch';
 import { CartState, ProductCart } from '../../types/types';
 
 const initialState: CartState = {
@@ -66,6 +66,16 @@ export const CartSlice = createSlice({
                 state.total = updatedCartCards.map(product => product.price).reduce((suma, actual) => suma + actual, 0);
             })
             .addCase(delCartCard.rejected, (state, action: PayloadAction<any>) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+            .addCase(delAllCartCards.pending, (state) => {
+                state.loading = true;
+            })
+            .addCase(delAllCartCards.fulfilled, (state) => {
+                state = initialState;
+            })
+            .addCase(delAllCartCards.rejected, (state, action: PayloadAction<any>) => {
                 state.loading = false;
                 state.error = action.payload;
             })

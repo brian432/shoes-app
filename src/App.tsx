@@ -8,6 +8,8 @@ import { Home } from './pages/Home/home';
 import { Product } from './pages/product/product';
 import { Logged } from './components/logged/logged';
 import { Cart } from './pages/cart/cart';
+import { Success } from './pages/success/success';
+import { Orders } from './pages/orders/Orders';
 
 import './index.css';
 
@@ -30,6 +32,8 @@ export const App: FC = () => {
                 } />
                 <Route path='/cart' element={<Cart />} />
                 <Route path='/product/:id' element={<Product />} />
+                <Route path='/success' element={<Success />} />
+                <Route path='/orders' element={<Orders />} />
             </Routes>
         </>
 

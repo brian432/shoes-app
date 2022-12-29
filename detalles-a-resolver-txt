@@ -1,0 +1,3 @@
+1)Indice del carrito de compras en el header, que cada vez que se actualice la pagina no se borre el indice
+2)Resolver lo que tarda en cambiar del componente cart al success
+3)Si ingresamos mal un usuario y despues vamos a crear uno en register, al crear bien el cartel que nos genera es el de usuario y/o contraseña invalida

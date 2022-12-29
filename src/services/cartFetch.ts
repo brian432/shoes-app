@@ -68,7 +68,6 @@ export const updateCartCard = createAsyncThunk('cart/updateCartCard',
                 })
             });
             const result = await response.json();
-            console.log(result)
             if (result.status_code === 200) return result.data
             else return thunkApi.rejectWithValue(result.error);
 
@@ -91,6 +90,29 @@ export const delCartCard = createAsyncThunk('cart/delCartCard',
             const result = await response.json();
             if (result.status_code === 200) return result.data
             else return thunkApi.rejectWithValue(result.error);
+
+        } catch (err: any) {
+            return thunkApi.rejectWithValue(err.message);
+        }
+    }
+);
+
+
+export const delAllCartCards = createAsyncThunk('cart/delAllCartCards',
+    async (productsIds: (string | undefined)[], thunkApi) => {
+        try {
+            const response = await fetch(`http://localhost:3001/api/carts`, {
+                method: "DELETE",
+                headers: {
+                    "Content-type": "application/json",
+                    "Authorization": "Bearer " + localStorage.getItem("tokenAuth")
+                },
+                body: JSON.stringify({
+                    productsIds
+                })
+            });
+            const result = await response.json();
+            if (result.status_code !== 204) return thunkApi.rejectWithValue(result.error);
 
         } catch (err: any) {
             return thunkApi.rejectWithValue(err.message);

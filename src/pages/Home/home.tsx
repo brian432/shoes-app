@@ -4,7 +4,6 @@ import './home.css';
 
 export const Home = () => {
     const products = useProducts();
-    
     return (
         <div className='home-container'>
             {
